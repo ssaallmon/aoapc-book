@@ -9,7 +9,7 @@ int guessed[256];
 
 void guess(char c) {
   int bad = 1;
-  for (int i = 0, len = strlen(s); i < len; ++i) {
+  for (int i = 0; i < strlen(s); ++i) {
     if (s[i] == c) {
       s[i] = ' ';
       --left;
