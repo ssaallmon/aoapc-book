@@ -12,8 +12,7 @@ int sum() {
   sort(s, s + cnt);
   for (int i = 0; i < n; ++i)
     for (int j = 0; j < n; ++j)
-      ans += upper_bound(s, s + cnt, -C[i] - D[j]) -
-             lower_bound(s, s + cnt, -C[i] - D[j]);
+      ans += upper_bound(s, s + cnt, -C[i] - D[j]) - lower_bound(s, s + cnt, -C[i] - D[j]);
   return ans;
 }
 
