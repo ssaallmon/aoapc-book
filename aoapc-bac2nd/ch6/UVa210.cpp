@@ -4,6 +4,8 @@
 const int maxn = 1005;
 int var[26], n, t[5], Q, locked;
 int rq[maxn], bq[maxn], f1, r1, f2, r2;
+// rq: ready queue, f1: rq front, r1: rq rear
+// bq: blocked queue, f2: bq front, r2: bq rear
 
 struct Program {
   int cur;
@@ -41,14 +43,14 @@ int main() {
           printf("%d: %d\n", i + 1, var[s[6] - 'a']);
           q -= t[1];
         } else if (s[0] == 'l') {
-          if (locked) {
+          if (locked) {  // place to blocked queue
             bq[++r2] = i;
             break;
           }
           locked = 1;
           q -= t[2];
         } else if (s[0] == 'u') {
-          if (f2 <= r2) rq[--f1] = bq[f2++];
+          if (f2 <= r2) rq[--f1] = bq[f2++];  // move to ready queue
           locked = 0;
           q -= t[3];
         } else if (s[0] == 'e')
