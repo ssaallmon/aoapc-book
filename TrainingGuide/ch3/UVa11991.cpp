@@ -7,11 +7,11 @@ int n, m, k, v;
 map<int, vector<int>> a;
 
 int main() {
-  while (~scanf("%d%d", &n, &m)) {
+  while(~scanf("%d%d", &n, &m)) {
     a.clear();
     for(int i = 1; i <= n; ++i) {
       scanf("%d", &v);
-      if (!a.count(v)) a[v] = vector<int>();
+      if(!a.count(v)) a[v] = vector<int>();
       a[v].push_back(i);
     }
     while(m--) {
