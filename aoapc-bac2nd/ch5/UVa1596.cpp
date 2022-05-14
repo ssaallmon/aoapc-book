@@ -10,14 +10,14 @@ struct Array {
 } arr[52];
 
 void init() {
-  for (int i = 0; i < 52; ++i) {
+  for(int i = 0; i < 52; ++i) {
     arr[i].length = 0;
     arr[i].element.clear();
   }
 }
 
 int hunt(char *s) {
-  if (strchr(alpha, s[0])) {
+  if(strchr(alpha, s[0])) {
     int idx = hunt(s + 2);
     int a = strchr(alpha, s[0]) - alpha;
     return idx >= 0 && arr[a].element.count(idx) ? arr[a].element[idx] : -1;
@@ -30,13 +30,13 @@ int hunt(char *s) {
 
 int main() {
   char s[85];
-  while (scanf("%s", s) && s[0] != '.') {
+  while(scanf("%s", s) && s[0] != '.') {
     init();
     int bug = 0, num = 0;
     do {
-      if (bug) continue;
+      if(bug) continue;
       int a = strchr(alpha, s[0]) - alpha;
-      if (strchr(s, '=')) {
+      if(strchr(s, '=')) {
         int idx = hunt(s + 2);
         int val = hunt(strchr(s, '=') + 1);
         idx >= 0 && idx < arr[a].length && val >= 0 ? arr[a].element[idx] = val : bug = 1;
@@ -47,7 +47,7 @@ int main() {
         arr[a].length = n;
       }
       ++num;
-    } while (scanf("%s", s) && s[0] != '.');
+    } while(scanf("%s", s) && s[0] != '.');
     printf("%d\n", bug ? num : 0);
   }
   return 0;
