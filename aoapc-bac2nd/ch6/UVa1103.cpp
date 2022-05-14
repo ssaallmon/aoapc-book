@@ -19,42 +19,39 @@ char pic[maxh][maxw], color[maxh][maxw], line[maxw];
 
 void decode(int r, int c, char ch) {
   int dec = isdigit(ch) ? ch - '0' : ch - 'a' + 10;
-  for (int i = 0; i < 4; ++i) pic[r][c + i] = bin[dec][i] - '0';
+  for(int i = 0; i < 4; ++i) pic[r][c + i] = bin[dec][i] - '0';
 }
 
 void fill(int r, int c, int id) {
-  if (pic[r][c] || color[r][c] || r < 0 || r >= H || c < 0 || c >= W) return;
+  if(pic[r][c] || color[r][c] || r < 0 || r >= H || c < 0 || c >= W) return;
   color[r][c] = id;
-  for (int i = 0; i < 4; ++i) fill(r + dr[i], c + dc[i], id);
+  for(int i = 0; i < 4; ++i) fill(r + dr[i], c + dc[i], id);
 }
 
 void bound(int r, int c) {
-  if (color[r][c] || r < 0 || r >= H || c < 0 || c >= W) return;
-  if (pic[r][c]) {
+  if(color[r][c] || r < 0 || r >= H || c < 0 || c >= W) return;
+  if(pic[r][c]) {
     color[r][c] = 1;
-    for (int i = 0; i < 4; ++i) bound(r + dr[i], c + dc[i]);
-  } else {
-    ++idx;
-    fill(r, c, 2);
-  }
+    for(int i = 0; i < 4; ++i) bound(r + dr[i], c + dc[i]);
+  } else { ++idx; fill(r, c, 2); }
 }
 
 int main() {
   int kase = 0;
-  while (scanf("%d%d", &H, &W) == 2 && H) {
+  while(scanf("%d%d", &H, &W) == 2 && H) {
     string ans;
     memset(pic, 0, sizeof(pic));
     memset(color, 0, sizeof(color));
-    for (int i = 0; i < H; ++i) {
+    for(int i = 0; i < H; ++i) {
       scanf("%s", line);
-      for (int j = 0; j < W; ++j) decode(i + 1, j * 4 + 1, line[j]);
+      for(int j = 0; j < W; ++j) decode(i + 1, j * 4 + 1, line[j]);
     }
     H += 2;
     W = 4 * W + 2;
     fill(0, 0, -1);
-    for (int i = 0; i < H; ++i) {
-      for (int j = 0; j < W; ++j) {
-        if (pic[i][j] && !color[i][j]) {
+    for(int i = 0; i < H; ++i) {
+      for(int j = 0; j < W; ++j) {
+        if(pic[i][j] && !color[i][j]) {
           idx = 0;
           bound(i, j);
           ans += code[idx];
