@@ -8,12 +8,12 @@ char s[maxm][maxn], ans[maxn];
 
 void hamming_dist() {
   err = 0;
-  for (int i = 0; i < n; ++i) {
+  for(int i = 0; i < n; ++i) {
     int p = 0, num[26];
     memset(num, 0, sizeof(num));
-    for (int j = 0; j < m; ++j) ++num[s[j][i] - 'A'];
-    for (int j = 0; j < 26; ++j)
-      if (num[j] > num[p]) p = j;
+    for(int j = 0; j < m; ++j) ++num[s[j][i] - 'A'];
+    for(int j = 0; j < 26; ++j)
+      if(num[j] > num[p]) p = j;
     ans[i] = 'A' + p;
     err += m - num[p];
   }
@@ -22,11 +22,11 @@ void hamming_dist() {
 int main() {
   int T;
   scanf("%d", &T);
-  while (T--) {
+  while(T--) {
     scanf("%d%d", &m, &n);
     memset(s, 0, sizeof(s));
     memset(ans, 0, sizeof(ans));
-    for (int i = 0; i < m; ++i) scanf("%s", s[i]);
+    for(int i = 0; i < m; ++i) scanf("%s", s[i]);
     hamming_dist();
     printf("%s\n%d\n", ans, err);
   }
