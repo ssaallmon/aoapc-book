@@ -14,13 +14,13 @@ int bfs() {
   std::queue<Square> q;
   q.push(a);
   d[a.c][a.r] = 0;
-  while (!q.empty()) {
+  while(!q.empty()) {
     Square u = q.front();
     q.pop();
-    if (u.c == b.c && u.r == b.r) return d[u.c][u.r];
-    for (int i = 0; i < 8; ++i) {
+    if(u.c == b.c && u.r == b.r) return d[u.c][u.r];
+    for(int i = 0; i < 8; ++i) {
       int x = u.c + dc[i], y = u.r + dr[i];
-      if (d[x][y] < 0 && x >= 0 && x < 8 && y >= 0 && y < 8) {
+      if(d[x][y] < 0 && x >= 0 && x < 8 && y >= 0 && y < 8) {
         q.push(Square{x, y});
         d[x][y] = d[u.c][u.r] + 1;
       }
@@ -30,7 +30,7 @@ int bfs() {
 
 int main() {
   char s1[3], s2[3];
-  while (scanf("%s%s", s1, s2) == 2) {
+  while(scanf("%s%s", s1, s2) == 2) {
     memset(d, -1, sizeof(d));
     a = Square{s1[0] - 'a', s1[1] - '1'};
     b = Square{s2[0] - 'a', s2[1] - '1'};
