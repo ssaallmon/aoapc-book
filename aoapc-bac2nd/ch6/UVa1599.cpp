@@ -21,12 +21,12 @@ void rev_bfs() {
   queue<int> q;
   q.push(n);
   vis[n] = 1;
-  while (!q.empty()) {
+  while(!q.empty()) {
     int u = q.front();
     q.pop();
-    for (int i = 0; i < G[u].size(); ++i) {
+    for(int i = 0; i < G[u].size(); ++i) {
       int e = G[u][i], v = E[e].u == u ? E[e].v : E[e].u;
-      if (!vis[v]) {
+      if(!vis[v]) {
         q.push(v);
         vis[v] = 1;
         d[v] = d[u] + 1;
@@ -39,24 +39,24 @@ void bfs() {
   memset(vis, 0, sizeof(vis));
   vector<int> cur{1};
   vis[1] = 1;
-  for (int i = 0; i < d[1]; ++i) {
+  for(int i = 0; i < d[1]; ++i) {
     int min_color = INF;
-    for (int j = 0; j < cur.size(); ++j) {
+    for(int j = 0; j < cur.size(); ++j) {
       int u = cur[j];
-      for (int k = 0; k < G[u].size(); ++k) {
+      for(int k = 0; k < G[u].size(); ++k) {
         int e = G[u][k], color = E[e].w;
         int v = E[e].u == u ? E[e].v : E[e].u;
-        if (d[u] - d[v] == 1 && min_color > color) min_color = color;
+        if(d[u] - d[v] == 1 && min_color > color) min_color = color;
       }
     }
     p.push_back(min_color);
     vector<int> next;
-    for (int j = 0; j < cur.size(); ++j) {
+    for(int j = 0; j < cur.size(); ++j) {
       int u = cur[j];
-      for (int k = 0; k < G[u].size(); ++k) {
+      for(int k = 0; k < G[u].size(); ++k) {
         int e = G[u][k], color = E[e].w;
         int v = E[e].u == u ? E[e].v : E[e].u;
-        if (!vis[v] && d[u] - d[v] == 1 && color == min_color) {
+        if(!vis[v] && d[u] - d[v] == 1 && color == min_color) {
           vis[v] = 1;
           next.push_back(v);
         }
@@ -71,8 +71,8 @@ int main() {
     E.clear();
     p.clear();
     memset(d, 0, sizeof(d));
-    for (int i = 1; i <= n; ++i) G[i].clear();
-    for (int i = 0; i < m; ++i) {
+    for(int i = 1; i <= n; ++i) G[i].clear();
+    for(int i = 0; i < m; ++i) {
       int a, b, c;
       scanf("%d%d%d", &a, &b, &c);
       E.push_back(Edge(a, b, c));
@@ -82,7 +82,7 @@ int main() {
     rev_bfs();
     bfs();
     printf("%d\n", d[1]);
-    for (int i = 0; i < p.size(); ++i) printf(i ? " %d" : "%d", p[i]);
+    for(int i = 0; i < p.size(); ++i) printf(i ? " %d" : "%d", p[i]);
     putchar('\n');
   }
   return 0;
