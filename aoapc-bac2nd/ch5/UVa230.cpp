@@ -1,8 +1,8 @@
-#include <algorithm>
 #include <iostream>
 #include <string>
-#include <unordered_map>
 #include <vector>
+#include <algorithm>
+#include <unordered_map>
 using namespace std;
 
 struct Book {
@@ -19,29 +19,29 @@ int cmp(const int i, const int j) {
 
 int main() {
   string s;
-  while (getline(cin, s) && s[0] != 'E') {
+  while(getline(cin, s) && s[0] != 'E') {
     int i = s.find("by");
     n.push_back(v.size());
     v.push_back(Book(s.substr(i + 3), s.substr(0, i - 1)));
   }
   stat.resize(n.size(), 2);
   sort(n.begin(), n.end(), cmp);  // indirect ordination
-  for (int i = 0; i < n.size(); ++i) m[v[n[i]].tt] = i;
-  while (getline(cin, s) && s[0] != 'E') {
-    if (s[0] == 'S') {
-      for (int i = 0; i < n.size(); ++i) {
-        if (stat[i]) continue;
+  for(int i = 0; i < n.size(); ++i) m[v[n[i]].tt] = i;
+  while(getline(cin, s) && s[0] != 'E') {
+    if(s[0] == 'S') {
+      for(int i = 0; i < n.size(); ++i) {
+        if(stat[i]) continue;
         stat[i] = 2;
         int first = 0;
         cout << "Put " << v[n[i]].tt;
-        for (int j = i - 1; j >= 0; --j) {
-          if (stat[j] == 2) {
+        for(int j = i - 1; j >= 0; --j) {
+          if(stat[j] == 2) {
             cout << " after " + v[n[j]].tt << '\n';
             first = 1;
             break;
           }
         }
-        if (!first) cout << " first\n";
+        if(!first) cout << " first\n";
       }
       cout << "END\n";
     } else
