@@ -6,13 +6,13 @@ const int maxn = 5005;
 int n, ok, p[2][maxn], vis[2][maxn];
 
 struct Interval {
-  int l, r, id;  // id: primitive index
+  int l, r, id;
   bool operator<(const Interval& rhs) const {
     return r < rhs.r || r == rhs.r && l < rhs.l;
   }
 } I[2][maxn];
 
-void place(int i, int j) {  // i: axis, j: sorted index
+void place(int i, int j) {  
   for(int k = I[i][j].l; k <= I[i][j].r; ++k) {
     if(!vis[i][k]) {
       p[i][I[i][j].id] = k;
@@ -34,10 +34,7 @@ int main() {
     }
     std::sort(I[0], I[0] + n);
     std::sort(I[1], I[1] + n);
-    for(int i = 0; i < n && ok; ++i) {
-      place(0, i);
-      place(1, i);
-    }
+    for(int i = 0; i < n && ok; ++i) { place(0, i); place(1, i); }
     if(ok)
       for(int i = 0; i < n; ++i) printf("%d %d\n", p[0][i], p[1][i]);
     else puts("IMPOSSIBLE");
