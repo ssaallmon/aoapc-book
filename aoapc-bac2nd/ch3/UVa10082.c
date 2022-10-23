@@ -1,5 +1,5 @@
-#include <cstdio>
-#include <cstring>
+#include <stdio.h>
+#include <string.h>
 
 const char *s = "`1234567890-=QWERTYUIOP[]\\ASDFGHJKL;'ZXCVBNM,./";
 
