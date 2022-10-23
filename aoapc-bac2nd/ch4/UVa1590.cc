@@ -1,6 +1,6 @@
-#include <algorithm>
 #include <cstdio>
 #include <cstring>
+#include <algorithm>
 
 const int mask_table[] = {0, 128, 192, 224, 240, 248, 252, 254, 255};
 int ip[4][1005], addr[4], mask[4];
