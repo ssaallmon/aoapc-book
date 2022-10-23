@@ -1,5 +1,4 @@
 #include <cstdio>
-#include <cstring>
 #include <algorithm>
 
 int m, n, H[1005];
@@ -7,7 +6,7 @@ double v, k, wl; // v: volume, wl: water level
 
 int main() {
   int kase = 0;
-  while(scanf("%d%d", &m, &n) == 2 && m) {
+  while(scanf("%d%d", &m, &n) && m) {
     n *= m;
     for(int i = 0; i < n; ++i) scanf("%d", &H[i]);
     scanf("%lf", &v);
