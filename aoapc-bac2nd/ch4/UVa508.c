@@ -1,11 +1,11 @@
-#include <cmath>
-#include <cstdio>
-#include <cstring>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 
 int n;
 char morse_code[128][10], context[105][15], morse_word[105][65], ans[15];
 
-void match(const char *s) {
+void match(char *s) {
   int m = 0;
   for(int i = 0; i < n; ++i) {
     if(strcmp(s, morse_word[i])) continue;
@@ -36,9 +36,6 @@ int main() {
     for(int i = 0; i < strlen(s1); ++i) strcat(s2, morse_code[s1[i]]);
     strcpy(morse_word[n], s2);
   }
-  while(scanf("%s", s2) && strcmp(s2, "*")) {
-    match(s2);
-    printf("%s\n", ans);
-  }
+  while(scanf("%s", s2) && strcmp(s2, "*")) { match(s2); printf("%s\n", ans); }
   return 0;
 }
