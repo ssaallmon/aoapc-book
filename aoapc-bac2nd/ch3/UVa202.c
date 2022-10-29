@@ -1,15 +1,10 @@
-#include <cstdio>
-#include <cstring>
-
-const int maxn = 3005;
-int q[maxn], r[maxn];
+#include <stdio.h>
+#define MAXN 3005
 
 int main() {
   int a, b;
-  while(scanf("%d%d", &a, &b) == 2) {
-    int n = 0, ok = 1;
-    memset(q, 0, sizeof(q));
-    memset(r, 0, sizeof(r));
+  while(~scanf("%d%d", &a, &b)) {
+    int q[MAXN], r[MAXN], n = 0, ok = 1;
     printf("%d/%d = %d.", a, b, a / b);
     a %= b;
     while(ok) {
