@@ -1,17 +1,16 @@
-#include <cstdio>
-#include <cstring>
+#include <stdio.h>
+#include <string.h>
+#define MAXN 100
 
-const int maxn = 100;
 int left, chance;
-char s[maxn], s2[maxn];
+char s[MAXN], s2[MAXN];
 int win, lose;
 int guessed[256];
 
 void guess(char c) {
   int bad = 1;
-  for(int i = 0; i < strlen(s); ++i) {
+  for(int i = 0; i < strlen(s); ++i)
     if(s[i] == c) { s[i] = ' '; --left; bad = 0; }
-  }
   if(bad) --chance;
   if(!left) win = 1;
   if(!chance) lose = 1;
