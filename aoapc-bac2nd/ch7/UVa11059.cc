@@ -1,18 +1,16 @@
 #include <cstdio>
 #include <algorithm>
 
-int S[20], N, M;
-long long P, p;
-
 int main() {
+  int S[20], N, M;
   while(~scanf("%d", &N)) {
-    P = 0;
+    long long P = 0;
     for(int i = 0; i < N; ++i) scanf("%d", &S[i]);
     for(int i = 0; i < N; ++i) {
       for(int j = i; j < N; ++j) {
-        p = 1;
-        for(int k = i; k <= j; ++k) p *= S[k];
-        P = std::max(P, p);
+        long long a = 1;
+        for(int k = i; k <= j; ++k) a *= S[k];
+        P = std::max(P, a);
       }
     }
     printf("Case #%d: The maximum product is %lld.\n\n", ++M, P);
