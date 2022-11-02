@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
-#define MAXL 105
-char s[MAXL], n;
+const int maxl = 105;
+char s[maxl], n;
 
 int less(int p, int q) {
   for(int i = 0; i < n; ++i) {
