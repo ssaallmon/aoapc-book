@@ -1,11 +1,11 @@
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
-#define MAXN 105
+const int maxn = 105;
 
 int main() {
   int n1[26], n2[26];
-  char s1[MAXN], s2[MAXN];
+  char s1[maxn], s2[maxn];
   while(~scanf("%s%s", s1, s2)) {
     memset(n1, 0, sizeof(n1));
     memset(n2, 0, sizeof(n2));
