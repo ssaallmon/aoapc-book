@@ -1,9 +1,9 @@
-#include <stdio.h>
-#include <string.h>
-#define MAXN 100
+#include <cstdio>
+#include <cstring>
+const int maxn = 100;
 
 int left, chance;
-char s[MAXN], s2[MAXN];
+char s[maxn], s2[maxn];
 int win, lose;
 int guessed[256];
 
