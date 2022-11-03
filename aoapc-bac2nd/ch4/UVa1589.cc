@@ -1,6 +1,5 @@
-#include <stdio.h>
-#include <string.h>
-#define MAXN 10
+#include <cstdio>
+#include <cstring>
 
 const int gdir[4][2] = {0,1,0,-1,-1,0,1,0};
 const int hdir[8][2] = {-2,-1,-2,1,2,-1,2,1,-1,-2,1,-2,-1,2,1,2};
@@ -8,7 +7,7 @@ const int hdir[8][2] = {-2,-1,-2,1,2,-1,2,1,-1,-2,1,-2,-1,2,1,2};
 struct Piece {
   char type;
   int r, c;
-} p[MAXN];
+} p[10];
 int N, r0, c0, board[11][10];
 
 int legal(int r, int c, int G) {
