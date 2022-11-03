@@ -8,10 +8,8 @@ void init() {
   int n = 0;
   for(int i = 0; i < r; ++i) {
     for(int j = 0; j < c; ++j) {
-      if(G[i][j] != '*' && (!i || !j || G[i][j - 1] == '*' || G[i - 1][j] == '*'))
-        N[i][j] = ++n;
-      else
-        N[i][j] = G[i][j] == '*' ? -1 : 0;
+      if(G[i][j] != '*' && (!i || !j || G[i][j - 1] == '*' || G[i - 1][j] == '*')) N[i][j] = ++n;
+      else N[i][j] = G[i][j] == '*' ? -1 : 0;
     }
   }
 }
