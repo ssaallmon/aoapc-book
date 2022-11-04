@@ -14,14 +14,14 @@ void print(const string &s, int len, char c) {
 }
 
 int main() {
+  string s;
   int n1 = 0;
-  string s1, s2;
-  while(getline(cin, s1)) {
+  while(getline(cin, s)) {
     int i = 0;
-    stringstream ss(s1);
-    while(ss >> s2) {
-      v[n1].push_back(s2);
-      p[i] = max(p[i], (int)s2.size());
+    stringstream ss(s);
+    while(ss >> s) {
+      v[n1].push_back(s);
+      p[i] = max(p[i], (int)s.size());
       ++i;
     }
     ++n1;
