@@ -1,13 +1,14 @@
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
-#define MAXL 105
+
+const int maxl = 105;
+char S[maxl], T[maxl];
 
 int main() {
   int C, kase = 0;
   scanf("%d", &C);
   while(C--) {
-    char S[MAXL], T[MAXL];
     scanf("%s%s", S, T);
     int n = strlen(S), a1 = 0, a2 = 0, a3 = 0;
     for(int i = 0; i < n; ++i) {
