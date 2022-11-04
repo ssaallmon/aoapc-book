@@ -1,12 +1,11 @@
-#include <cmath>
 #include <cstdio>
 #include <cstring>
-
-const float EPS = 1e-4;
+#include <cmath>
 
 int B;
 double A, a[10][35];
 long long b[10][35];
+const float EPS = 1e-4;
 
 void init() {
   for(int i = 0; i < 10; ++i)
