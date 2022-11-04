@@ -3,7 +3,7 @@
 #include <algorithm>
 
 const int maxn = 5005;
-int n, ok, p[2][maxn], vis[2][maxn];
+int p[2][maxn], vis[2][maxn], ok;
 
 struct Interval {
   int l, r, id;
@@ -25,6 +25,7 @@ void place(int i, int j) {
 }
 
 int main() {
+  int n;
   while(scanf("%d", &n) && n) {
     ok = 1;
     memset(vis, 0, sizeof(vis));
