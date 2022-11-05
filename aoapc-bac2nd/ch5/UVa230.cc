@@ -6,38 +6,38 @@
 using namespace std;
 
 struct Book {
-  string A, T;
-  Book(string A, string T) : A(A), T(T) {}
+  string author, title;
+  Book(string author, string title) : author(author), title(title) {}
   bool operator < (const Book& rhs) const {
-    return A < rhs.A || A == rhs.A && T < rhs.T;
+    return author < rhs.author || author == rhs.author && title < rhs.title;
   }
 };
+vector<Book> stock;
+map<string, int> status;
 
 int main() {
   string s;
-  vector<Book> v;
-  map<string, int> m;
   while(getline(cin, s) && s[0] != 'E') {
     int i = s.find("by");
-    m[s.substr(0, i-1)] = 2;
-    v.push_back(Book(s.substr(i+3), s.substr(0, i-1)));
+    status[s.substr(0, i - 1)] = 2;
+    stock.push_back(Book(s.substr(i + 3), s.substr(0, i - 1)));
   }
-  sort(v.begin(), v.end());
+  sort(stock.begin(), stock.end());
   while(getline(cin, s) && s[0] != 'E') {
     if(s[0] == 'S') {
-      for(int i = 0; i < v.size(); ++i) {
-        if(!m[v[i].T]) {
+      for(int i = 0; i < stock.size(); ++i) {
+        if(!status[stock[i].title]) {
           int pre = -1;
-          m[v[i].T] = 2;
-          cout << "Put " << v[i].T;
+          status[stock[i].title] = 2;
+          cout << "Put " << stock[i].title;
           for(int j = 0; j < i; ++j)
-            if(m[v[j].T] == 2) pre = j;
-          cout << (pre == -1 ? " first\n" : " after " + v[pre].T + '\n');
+            if(status[stock[j].title] == 2) pre = j;
+          cout << (pre == -1 ? " first\n" : " after " + stock[pre].title + '\n');
         }
       }
       puts("END");
     } 
-    else m[s.substr(s.find(' ')+1)]--;
+    else status[s.substr(s.find(' ') + 1)]--;
   }
   return 0;
 }
