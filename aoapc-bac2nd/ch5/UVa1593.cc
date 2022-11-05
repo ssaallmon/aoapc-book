@@ -6,7 +6,7 @@
 using namespace std;
 
 int p[185];
-vector<string> v[1005];
+vector<string> code[1005];
 
 void print(const string &s, int len, char c) {
   cout << s;
@@ -20,16 +20,16 @@ int main() {
     int i = 0;
     stringstream ss(s);
     while(ss >> s) {
-      v[n1].push_back(s);
+      code[n1].push_back(s);
       p[i] = max(p[i], (int)s.size());
       ++i;
     }
     ++n1;
   }
   for(int i = 0; i < n1; ++i) {
-    int n2 = v[i].size();
+    int n2 = code[i].size();
     for(int j = 0; j < n2; ++j)
-      print(v[i][j], j == n2 - 1 ? v[i][j].size() : p[j] + 1, ' ');
+      print(code[i][j], j == n2 - 1 ? code[i][j].size() : p[j] + 1, ' ');
     putchar('\n');
   }
   return 0;
