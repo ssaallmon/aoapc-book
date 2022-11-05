@@ -2,8 +2,9 @@
 #include <algorithm>
 
 int main() {
-  int S[20], N, M;
+  int N, M;
   while(~scanf("%d", &N)) {
+    int S[20];
     long long P = 0;
     for(int i = 0; i < N; ++i) scanf("%d", &S[i]);
     for(int i = 0; i < N; ++i) {
