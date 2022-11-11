@@ -5,7 +5,7 @@ using namespace std;
 
 const int maxn = 30;
 int n, pos[maxn];
-stack<int> pile[maxn];
+stack<int> pile[maxn], temp;
 
 void clear_above(int p) {
   int pa = pos[p];
@@ -18,32 +18,30 @@ void clear_above(int p) {
 }
 
 void pile_onto(int a, int b) {
-  stack<int> t;
   int pa = pos[a], pb = pos[b];
   while(!pile[pa].empty()) {
     int p = pile[pa].top();
-    t.push(p);
+    temp.push(p);
     pos[p] = pb;
     pile[pa].pop();
     if(p == a) break;
   }
-  while(!t.empty()) {
-    pile[pb].push(t.top());
-    t.pop();
+  while(!temp.empty()) {
+    pile[pb].push(temp.top());
+    temp.pop();
   }
 }
 
 void print() {
   for(int i = 0; i < n; ++i) {
-    stack<int> t;
     while(!pile[i].empty()) {
-      t.push(pile[i].top());
+      temp.push(pile[i].top());
       pile[i].pop();
     }
     printf("%d:", i);
-    while(!t.empty()) {
-      printf(" %d", t.top());
-      t.pop();
+    while(!temp.empty()) {
+      printf(" %d", temp.top());
+      temp.pop();
     }
     putchar('\n');
   }
