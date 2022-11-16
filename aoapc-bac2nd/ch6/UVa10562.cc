@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <string.h>
+#include <cstdio>
+#include <cstring>
 
-#define MAXN 205
-char tree[MAXN][MAXN];
+const int maxn = 205;
+char tree[maxn][maxn];
 
 int printable(char c) { return c != '-' && c != '|' && c != ' ' && c != '#' && c != '\n'; }
 
@@ -26,7 +26,7 @@ int main() {
   while(T--) {
     int i = 0;
     memset(tree, 0, sizeof(tree));
-    while(*fgets(tree[i++], MAXN, stdin) != '#');
+    while(*fgets(tree[i++], maxn, stdin) != '#');
     int n = strlen(tree[0]);
     putchar('(');
     for(int i = 0; i < n; ++i)
