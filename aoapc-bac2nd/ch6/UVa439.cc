@@ -30,7 +30,7 @@ int bfs() {
 
 int main() {
   char s1[3], s2[3];
-  while(scanf("%s%s", s1, s2) == 2) {
+  while(~scanf("%s%s", s1, s2)) {
     memset(d, -1, sizeof(d));
     a = Square{s1[0] - 'a', s1[1] - '1'};
     b = Square{s2[0] - 'a', s2[1] - '1'};
