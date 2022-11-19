@@ -32,7 +32,7 @@ int main() {
       --d[u];
       ++d[v];
     }
-    printf(euler() ? "Ordering is possible.\n" : "The door cannot be opened.\n");
+    puts(euler() ? "Ordering is possible." : "The door cannot be opened.");
   }
   return 0;
 }
