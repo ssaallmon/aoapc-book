@@ -18,9 +18,9 @@ int main() {
     stringstream ss(s);
     while(ss >> a[n]) ++n;
     for(int i = n - 1; i; --i) {
-      int max = a[i], p = i;
+      int A = a[i], p = i;
       for(int j = i - 1; j >= 0; --j)
-        if(a[j] > max) { max = a[j]; p = j; }
+        if(a[j] > A) { A = a[j]; p = j; }
       if(p == i) continue;
       if(p) flip(p);
       flip(i);
