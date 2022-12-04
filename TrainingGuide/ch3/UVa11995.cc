@@ -7,7 +7,6 @@ const char* ans[] = {
     "impossible",     "stack",    "queue",    "not sure",
     "priority queue", "not sure", "not sure", "not sure",
 };
-int cmd, x, idx, ok[3];
 
 int main() {
   int n;
@@ -15,8 +14,9 @@ int main() {
     stack<int> s;
     queue<int> q;
     priority_queue<int> pq;
-    ok[0] = ok[1] = ok[2] = 1;
+    int ok[3]{1, 1, 1};
     for(int i = 0; i < n; ++i) {
+      int cmd, x;
       scanf("%d%d", &cmd, &x);
       if(cmd == 1) {
         s.push(x);
@@ -31,7 +31,7 @@ int main() {
         pq.pop();
       }
     }
-    idx = ok[0] | (ok[1] << 1) | (ok[2] << 2);
+    int idx = ok[0] | (ok[1] << 1) | (ok[2] << 2);
     printf("%s\n", ans[idx]);
   }
   return 0;
