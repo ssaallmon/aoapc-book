@@ -8,7 +8,6 @@ map<int, vector<int>> a;
 
 int main() {
   while(~scanf("%d%d", &n, &m)) {
-    a.clear();
     for(int i = 1; i <= n; ++i) {
       scanf("%d", &v);
       if(!a.count(v)) a[v] = vector<int>();
