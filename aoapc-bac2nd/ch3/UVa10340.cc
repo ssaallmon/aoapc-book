@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-const int maxn = 1e5+5;
+const int maxn = 1e5 + 5;
 char s[maxn], t[maxn];
 
 int main() {
