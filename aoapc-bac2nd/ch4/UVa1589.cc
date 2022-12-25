@@ -1,8 +1,8 @@
 #include <cstdio>
 #include <cstring>
 
-const int gdir[4][2] = {0,1,0,-1,-1,0,1,0};
-const int hdir[8][2] = {-2,-1,-2,1,2,-1,2,1,-1,-2,1,-2,-1,2,1,2};
+const int gdir[4][2] = {0, 1, 0, -1, -1, 0, 1, 0};
+const int hdir[8][2] = {-2, -1, -2, 1, 2, -1, 2, 1, -1, -2, 1, -2, -1, 2, 1, 2};
 
 struct Piece {
   char type;
@@ -17,8 +17,8 @@ int legal(int r, int c, int G) {
 
 int stat(int r, int c, int tr, int tc) {
   int dr = 0, dc = 0, cnt = -board[r][c], n;
-  if(r == tr) { dc = c < tc ? 1 : -1; n = c < tc ? tc-c : c-tc; }
-  else { dr = r < tr ? 1 : -1; n = r < tr ? tr-r : r-tr; }
+  if(r == tr) { dc = c < tc ? 1 : -1; n = c < tc ? tc - c : c - tc; }
+  else { dr = r < tr ? 1 : -1; n = r < tr ? tr - r : r - tr; }
   for(int i = 0; i < n; ++i) {
     if(board[r][c]) ++cnt;
     r += dr; c += dc;
@@ -48,7 +48,7 @@ int main() {
           else if(p[j].type == 'C' && (pr == r1 || pc == c1) && stat(r1, c1, pr, pc) == 1) ok = 1;
           else if(p[j].type == 'H') {
             for(int k = 0; k < 8; ++k) {
-              if(board[pr + hdir[k][0]/2][pc + hdir[k][1]/2]) continue;
+              if(board[pr + hdir[k][0] / 2][pc + hdir[k][1] / 2]) continue;
               int hr = pr + hdir[k][0], hc = pc + hdir[k][1];
               if(legal(hr, hc, 0) && hr == r1 && hc == c1) { ok = 1; break; }
             }
