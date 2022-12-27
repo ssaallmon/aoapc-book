@@ -21,7 +21,7 @@ void init_and_input() {
     G[b].push_back(a);
     ++d[a]; ++d[b];
   }
-  k = *max_element(d+1, d+n+1) | 1;
+  k = *max_element(d + 1, d + n + 1) | 1;
 }
 
 void dfs(int u) {
