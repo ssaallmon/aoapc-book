@@ -3,20 +3,12 @@
 
 const int maxn = 105;
 int NP, NT, NF, p[maxn];
-std::vector<int> ip[maxn], op[maxn];  // ip: input place, op: output place
-
-void init() {
-  for(int i = 0; i < maxn; ++i) {
-    ip[i].clear();
-    op[i].clear();
-  }
-}
 
 int main() {
   int kase = 0;
   while(scanf("%d", &NP) && NP) {
-    init();
     int dead = 0, num = 0;
+    std::vector<int> ip[maxn], op[maxn];              // ip: input place, op: output place
     for(int i = 1; i <= NP; ++i) scanf("%d", &p[i]);  // begin from 1
     scanf("%d", &NT);
     for(int i = 0; i < NT; ++i) {
@@ -27,19 +19,17 @@ int main() {
     scanf("%d", &NF);
     for(int i = 0; i < NF; ++i, ++num) {
       dead = 1;
-      for(int j = 0; j < NT; ++j) {
+      for(int j = 0; j < NT && dead; ++j) {
         int fire = 1;
-        for(int k = 0; k < ip[j].size(); ++k) {
+        for(int k = 0; k < ip[j].size() && fire; ++k) {
           if(--p[ip[j][k]] < 0) {
             while(k >= 0) ++p[ip[j][k--]];
             fire = 0;
-            break;
           }
         }
         if(fire) {
           for(int k = 0; k < op[j].size(); ++k) ++p[op[j][k]];
           dead = 0;
-          break;
         }
       }
       if(dead) break;
