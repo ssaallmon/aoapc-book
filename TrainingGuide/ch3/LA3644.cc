@@ -1,6 +1,6 @@
 #include <cstdio>
 
-const int maxn = 1e5+5;
+const int maxn = 1e5 + 5;
 int p[maxn];
 
 int find(int i) { return p[i] == i ? i : p[i] = find(p[i]); }
