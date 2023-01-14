@@ -8,18 +8,24 @@ long long b[10][35];
 const float EPS = 1e-4;
 
 void init() {
-  for(int i = 0; i < 10; ++i)
-    for(int j = 1; j < 31; ++j) {
-      double d = log10(1 - pow(2, -1 - i)) + (pow(2, j) - 1) * log10(2);
-      b[i][j] = d;
-      a[i][j] = pow(10, d - b[i][j]);
+  for(int M = 0; M < 10; ++M) {
+    for(int E = 1; E < 31; ++E) {
+      double d = log10(1 - pow(2, -1 - M)) + (pow(2, E) - 1) * log10(2);
+      b[M][E] = d;
+      a[M][E] = pow(10, d - b[M][E]);
     }
+  }
 }
 
 void print_ans() {
-  for(int i = 0; i < 10; ++i)
-    for(int j = 1; j < 31; ++j)
-      if(b[i][j] == B && fabs(A - a[i][j]) < EPS) { printf("%d %d\n", i, j); return; }
+  for(int M = 0; M < 10; ++M) {
+    for(int E = 1; E < 31; ++E) {
+      if(b[M][E] == B && fabs(A - a[M][E]) < EPS) {
+        printf("%d %d\n", M, E);
+        return;
+      }
+    }
+  }
 }
 
 int main() {
