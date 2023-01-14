@@ -2,7 +2,7 @@
 #include <algorithm>
 using namespace std;
 
-const int maxn = 2e4+5;
+const int maxn = 2e4 + 5;
 int A[maxn], B[maxn];
 
 int main() {
