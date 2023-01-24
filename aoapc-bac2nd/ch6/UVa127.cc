@@ -1,14 +1,13 @@
 #include <cstdio>
 #include <cstring>
-#include <stack>
 #include <vector>
+#include <stack>
 using namespace std;
 
 struct Card {
   char rank, suit;
-  Card(char c1, char c2) : rank(c1), suit(c2) {}
-  bool operator==(const Card &c) const {
-    return rank == c.rank || suit == c.suit;
+  bool operator==(const Card &rhs) const {
+    return rank == rhs.rank || suit == rhs.suit;
   }
 };
 
@@ -20,38 +19,38 @@ void link(int L, int R) {
   left[R] = L;
 }
 
-int find(int idx, int step) {
-  while(idx && step--) idx = left[idx];
+int find(int idx, int n) {
+  while(idx && n--) idx = left[idx];
   return idx;
 }
 
 void accordian(int idx) {
   if(!idx) return;
-  int pos = 0;
+  int left_pos = 0;
   for(int i = idx; i; i = right[i]) {
     for(int j = 3; j > 0; j -= 2) {
       int k = find(i, j);
       if(k && pile[k].top() == pile[i].top()) {
         pile[k].push(pile[i].top());
         pile[i].pop();
-        pos = k;
+        left_pos = k;
         if(pile[i].empty()) { --cnt; link(left[i], right[i]); }
         break;
       }
     }
-    if(pos) break;
+    if(left_pos) break;
   }
-  accordian(pos);
+  accordian(left_pos);
 }
 
 int main() {
   char s[3];
-  while(scanf("%s", s) && strcmp(s, "#")) {
-    pile.resize(53);
-    pile[1].push(Card(s[0], s[1]));
+  while(scanf("%s", s) && s[0] != '#') {
+    pile = vector<stack<Card>>(53, stack<Card>());
+    pile[1].push(Card{s[0], s[1]});
     for(int i = 2; i < 53; ++i) {
       scanf("%s", s);
-      pile[i].push(Card(s[0], s[1]));
+      pile[i].push(Card{s[0], s[1]});
       link(i - 1, i);
     }
     cnt = 52;
@@ -60,7 +59,6 @@ int main() {
     accordian(right[0]);
     printf("%d pile%sremaining:", cnt, cnt > 1 ? "s " : " ");
     for(int i = right[0]; i; i = right[i]) printf(" %d", pile[i].size());
-    pile.clear();
     putchar('\n');
   }
   return 0;
