@@ -22,7 +22,7 @@ int valid_and_recover() {
 }
 
 void print_ans() {
-  string src, ans;
+  string src;
   for (int i = 0; i < b; i++) {
     for (int j = 0; j < d; j++) {
       if (j != i % d) src += disk[j].substr(i * s, s); 
