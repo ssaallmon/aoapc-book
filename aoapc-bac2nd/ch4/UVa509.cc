@@ -22,15 +22,15 @@ int valid_and_recover() {
 }
 
 void print_ans() {
-  string src;
+  string bin;
   for (int i = 0; i < b; i++) {
     for (int j = 0; j < d; j++) {
-      if (j != i % d) src += disk[j].substr(i * s, s); 
+      if (j != i % d) bin += disk[j].substr(i * s, s); 
     }
   }
-  if (src.size() % 4) src += string(4 - src.size() % 4, '0');
-  for (int i = 0; i < src.size() / 4; i++)
-    cout << hex << setiosflags(ios::uppercase) << stoi(src.substr(i * 4, 4), 0, 2);
+  if (bin.size() % 4) bin += string(4 - bin.size() % 4, '0');
+  for (int i = 0; i < bin.size() / 4; i++)
+    cout << hex << setiosflags(ios::uppercase) << stoi(bin.substr(i * 4, 4), 0, 2);
   putchar('\n');
 }
 
