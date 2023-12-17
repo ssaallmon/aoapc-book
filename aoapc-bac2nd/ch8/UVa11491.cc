@@ -6,14 +6,14 @@ char s[maxn];
 int N, D;
 
 int main() {
-  while(scanf("%d%d", &N, &D) && N) {
+  while (scanf("%d%d", &N, &D) && N) {
     int k = 0;
     char c = getchar();
     memset(s, 0, sizeof(s));
-    for(int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; ++i) {
       c = getchar();
-      while(k && s[k - 1] < c && i - k < D) --k;
-      if(k < N - D) s[k++] = c;
+      while (k && s[k-1] < c && i-k < D) --k;
+      if (k < N - D) s[k++] = c;
     }
     puts(s);
   }
