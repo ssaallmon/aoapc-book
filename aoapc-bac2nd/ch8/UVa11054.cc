@@ -3,10 +3,10 @@
 
 int main() {
   int n;
-  while(scanf("%d", &n) && n) {
+  while (scanf("%d", &n) && n) {
     int a, b = 0;
     long long ans = 0;
-    for(int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; ++i) {
       scanf("%d", &a);
       b += a;
       ans += abs(b);
