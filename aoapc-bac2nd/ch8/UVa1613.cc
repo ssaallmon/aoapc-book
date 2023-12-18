@@ -13,8 +13,8 @@ void init_and_input() {
   memset(c, 0, sizeof(c));
   memset(d, 0, sizeof(d));
   memset(vis, 0, sizeof(vis));
-  for(int i = 1; i <= n; ++i) G[i].clear();
-  for(int i = 0; i < m; ++i) {
+  for (int i = 1; i <= n; ++i) G[i].clear();
+  for (int i = 0; i < m; ++i) {
     int a, b;
     scanf("%d%d", &a, &b);
     G[a].push_back(b);
@@ -25,21 +25,21 @@ void init_and_input() {
 }
 
 void dfs(int u) {
-  for(int i = 0; i < G[u].size(); ++i) vis[c[G[u][i]]] = u;
-  for(int i = 1; i <= k; ++i)
-    if(vis[i] != u) { c[u] = i; break; }
-  for(int i = 0; i < G[u].size(); ++i)
-    if(!c[G[u][i]]) dfs(G[u][i]);
+  for (int i = 0; i < G[u].size(); ++i) vis[c[G[u][i]]] = u;
+  for (int i = 1; i <= k; ++i)
+    if (vis[i] != u) { c[u] = i; break; }
+  for (int i = 0; i < G[u].size(); ++i)
+    if (!c[G[u][i]]) dfs(G[u][i]);
 }
 
 void print_ans() {
   printf("%d\n", k);
-  for(int i = 1; i <= n; ++i) printf("%d\n", c[i]);
+  for (int i = 1; i <= n; ++i) printf("%d\n", c[i]);
   putchar('\n');
 }
 
 int main() {
-  while(~scanf("%d%d", &n, &m)) {
+  while (~scanf("%d%d", &n, &m)) {
     init_and_input();
     dfs(1);
     print_ans();
