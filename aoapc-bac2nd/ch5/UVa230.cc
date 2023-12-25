@@ -17,21 +17,21 @@ map<string, int> status;
 
 int main() {
   string s;
-  while(getline(cin, s) && s[0] != 'E') {
+  while (getline(cin, s) && s[0] != 'E') {
     int i = s.find("by");
     status[s.substr(0, i - 1)] = 2;
     stock.push_back(Book(s.substr(i + 3), s.substr(0, i - 1)));
   }
   sort(stock.begin(), stock.end());
-  while(getline(cin, s) && s[0] != 'E') {
-    if(s[0] == 'S') {
-      for(int i = 0; i < stock.size(); ++i) {
-        if(!status[stock[i].title]) {
+  while (getline(cin, s) && s[0] != 'E') {
+    if (s[0] == 'S') {
+      for (int i = 0; i < stock.size(); ++i) {
+        if (!status[stock[i].title]) {
           int pre = -1;
           status[stock[i].title] = 2;
           cout << "Put " << stock[i].title;
-          for(int j = 0; j < i; ++j)
-            if(status[stock[j].title] == 2) pre = j;
+          for (int j = 0; j < i; ++j)
+            if (status[stock[j].title] == 2) pre = j;
           cout << (pre == -1 ? " first\n" : " after " + stock[pre].title + '\n');
         }
       }
