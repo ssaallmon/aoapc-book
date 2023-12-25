@@ -15,10 +15,10 @@ vector<string> doc[100];
 map<string, set<int>> D;
 map<string, set<pair<int, int>>> V;
 
-void print_line(set<pair<int, int>> &ans) {
+void print_line(set<pair<int, int>>& ans) {
   if (ans.empty()) { puts("Sorry, I found nothing."); return; }
   int pre = ans.begin()->first; 
-  for (auto &DID : ans) {
+  for (auto& DID : ans) {
     if (DID.first != pre) puts("----------");
     cout << doc[DID.first][DID.second] << '\n';
     pre = DID.first;
@@ -57,7 +57,7 @@ int main() {
       for (int i = 0; i < N; i++) {
         if (D[term[0]].count(i)) continue;
         if (kase++) puts("----------");
-        for (auto &line : doc[i]) cout << line << '\n';
+        for (auto& line : doc[i]) cout << line << '\n';
       }
     } else {
       int op = 0;
@@ -73,7 +73,7 @@ int main() {
                 : set_union(ALL(D[term[0]]), ALL(D[term[1]]), INS(dns));
         for (int n : dns) {
           for (int i = 0; i < 2; i++)
-            for (auto &DID : V[term[i]])
+            for (auto& DID : V[term[i]])
 	      if (DID.first == n) ans.insert(DID);
 	}
         print_line(ans);
