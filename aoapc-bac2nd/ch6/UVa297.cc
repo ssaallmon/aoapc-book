@@ -4,7 +4,7 @@
 char s[512];
 int X, img[32][32];
 
-void draw(int &p, int r, int c, int w) {
+void draw(int& p, int r, int c, int w) {
   char node = s[p++];
   if (node == 'p') {
     draw(p, r,         c + w / 2, w / 2);
