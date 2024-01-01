@@ -22,9 +22,9 @@ struct Trie {
 
   void insert() {
     int u = 0, m = strlen(s2);
-    for(int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; ++i) {
       int c = s2[i] - 'a';
-      if(!ch[u][c]) { val[sz] = 0; ch[u][c] = sz++; }
+      if (!ch[u][c]) { val[sz] = 0; ch[u][c] = sz++; }
       u = ch[u][c];
     }
     val[u] = 1;
@@ -32,10 +32,10 @@ struct Trie {
 
   void search(int p){
     int u = 0;
-    for(int i = p; i < n; ++i) {
+    for (int i = p; i < n; ++i) {
       int c = s1[i] - 'a';
-      if(!ch[u][c]) break;
-      if(val[ch[u][c]]) d[p] = (d[p] + d[i + 1]) % MOD;
+      if (!ch[u][c]) break;
+      if (val[ch[u][c]]) d[p] = (d[p] + d[i + 1]) % MOD;
       u = ch[u][c];
     }
   }
@@ -43,14 +43,14 @@ struct Trie {
 
 int main() {
   int kase = 0;
-  while(~scanf("%s", s1)) {
+  while (~scanf("%s", s1)) {
     T.clear();
     n = strlen(s1);
     memset(d, 0, sizeof(d));
     d[n] = 1;
     scanf("%d", &S);
-    for(int i = 0; i < S; ++i) { scanf("%s", s2); T.insert(); }
-    for(int i = n - 1; i >= 0; --i) T.search(i);
+    for (int i = 0; i < S; ++i) { scanf("%s", s2); T.insert(); }
+    for (int i = n - 1; i >= 0; --i) T.search(i);
     printf("Case %d: %d\n", ++kase, d[0]);
   }
   return 0;
