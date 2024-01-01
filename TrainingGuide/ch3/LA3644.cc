@@ -7,10 +7,10 @@ int find(int i) { return p[i] == i ? i : p[i] = find(p[i]); }
 
 int main() {
   int a, b;
-  while(~scanf("%d", &a)) {
+  while (~scanf("%d", &a)) {
     int refusal = 0;
-    for(int i = 0; i < maxn; ++i) p[i] = i;
-    while(a + 1) {
+    for (int i = 0; i < maxn; ++i) p[i] = i;
+    while (a + 1) {
       scanf("%d", &b);
       a = find(a);
       b = find(b);
